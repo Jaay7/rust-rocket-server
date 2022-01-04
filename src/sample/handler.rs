@@ -45,6 +45,13 @@ pub fn delete_hotel(id: i32, connection: DbConn) -> Result<status::NoContent, St
     .map_err(|error| error_status(error))
 }
 
+#[get("/rating/<rating>")]
+pub fn filter_rating(rating: String, connection: DbConn) -> Result<Json<Vec<Hotel>>, Status> {
+  sample::repository::filter_rating(rating, &connection)
+    .map(|hotel| Json(hotel))
+    .map_err(|error| error_status(error))
+}
+
 fn hotel_created(hotel: Hotel) -> status::Created<Json<Hotel>> {
   status::Created(
     format!("localhost:{port}/hotel/{id}", port = port(), id = hotel.id).to_string(),

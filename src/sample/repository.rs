@@ -34,3 +34,9 @@ pub fn delete_hotel(hotel_id: i32, connection: &PgConnection) -> QueryResult<usi
   diesel::delete(hotel::table.find(hotel_id))
     .execute(connection)
 }
+
+pub fn filter_rating(hotel_rating: String, connection: &PgConnection) -> QueryResult<Vec<Hotel>> {
+  hotel.filter(rating.eq(hotel_rating))
+    .limit(5)
+    .load::<Hotel>(&*connection)
+}
