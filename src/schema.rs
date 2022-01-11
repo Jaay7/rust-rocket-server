@@ -11,7 +11,7 @@ table! {
         phone -> Varchar,
         website -> Varchar,
         email -> Varchar,
-        price -> Varchar,
+        price -> Int4,
         rating -> Varchar,
         review_count -> Varchar,
         latitude -> Varchar,

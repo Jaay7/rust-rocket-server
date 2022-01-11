@@ -11,7 +11,7 @@ CREATE TABLE hotel (
   phone VARCHAR NOT NULL,
   website VARCHAR NOT NULL,
   email VARCHAR NOT NULL,
-  price VARCHAR NOT NULL,
+  price INT NOT NULL,
   rating VARCHAR NOT NULL,
   review_count VARCHAR NOT NULL,
   latitude VARCHAR NOT NULL,
