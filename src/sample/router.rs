@@ -13,6 +13,7 @@ pub fn create_routes() {
       sample::handler::update_hotel,
       sample::handler::delete_hotel,
       sample::handler::filter_rating,
+      sample::handler::price_range
     ])
     .launch();
 }

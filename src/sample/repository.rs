@@ -40,3 +40,10 @@ pub fn filter_rating(hotel_rating: String, connection: &PgConnection) -> QueryRe
     .limit(5)
     .load::<Hotel>(&*connection)
 }
+
+pub fn price_range(range1: i32, range2: i32, connection: &PgConnection) -> QueryResult<Vec<Hotel>> {
+  hotel.filter(price.ge(range1))
+    .filter(price.le(range2))
+    .limit(5)
+    .load::<Hotel>(&*connection)
+}
