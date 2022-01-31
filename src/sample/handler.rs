@@ -59,6 +59,13 @@ pub fn price_range(range1: i32, range2: i32, connection: DbConn) -> Result<Json<
     .map_err(|error| error_status(error))
 }
 
+#[get("/rooms/<room_count>")]
+pub fn filter_rooms(room_count: i32, connection: DbConn) -> Result<Json<Vec<Hotel>>, Status> {
+  sample::repository::filter_rooms(room_count, &connection)
+    .map(|hotel| Json(hotel))
+    .map_err(|error| error_status(error))
+}
+
 fn hotel_created(hotel: Hotel) -> status::Created<Json<Hotel>> {
   status::Created(
     format!("localhost:{port}/hotel/{id}", port = port(), id = hotel.id).to_string(),

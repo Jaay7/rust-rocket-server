@@ -47,3 +47,9 @@ pub fn price_range(range1: i32, range2: i32, connection: &PgConnection) -> Query
     .limit(5)
     .load::<Hotel>(&*connection)
 }
+
+pub fn filter_rooms(room_count: i32, connection: &PgConnection) -> QueryResult<Vec<Hotel>> {
+  hotel.filter(rooms.eq(room_count))
+    .limit(5)
+    .load::<Hotel>(&*connection)
+}
